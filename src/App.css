@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+img{
+  width: 30%;
+  height: 250px;
+  border: 1px solid yellowgreen;
+  border-radius: 10px;
+}
+.images{
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+#root{
+  margin: 20px;
+  background-color: lavenderblush;
+}
+button{
+  margin-left: 1rem;
+}
+input:focus{
+  outline: none;
+}
