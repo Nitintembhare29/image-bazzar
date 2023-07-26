@@ -23,3 +23,5 @@ export default App;
 // access key and secreat key , api url
 // start postman and add api url
 // inside header put authorisation key and Client-ID Your_Access_Key as value
+// for getting photos on search add search/photos in main url
+// inside params key as query and search value
