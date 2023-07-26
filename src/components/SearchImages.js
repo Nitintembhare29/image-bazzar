@@ -16,19 +16,40 @@ const SearchImages = ({addImages})=>{
         getSearch();
     },[])
  // if we put empty bracket then it load for first time
-    function getSearch(){
-        axios.get('https://api.unsplash.com/search/photos', {
-            params : {
-                client_id : process.env.REACT_APP_ACCESS_KEY,
-                query : search
-            }
-        })
-        .then((response)=>addImages( response.data.results))
-        .catch(err=>console.log(err))
+    async function getSearch(){
+
+        // using promise chaning
+        // axios.get('https://api.unsplash.com/search/photos', {
+        //     params : {
+        //         client_id : process.env.REACT_APP_ACCESS_KEY,
+        //         query : search
+        //     }
+        // })
+        // .then((response)=>addImages( response.data.results))
+        // .catch(err=>console.log(err))
+
+
+        // using async-await
+        try{
+            const request = await axios.get('https://api.unsplash.com/search/photos', {
+                 params : {
+                    query : search,
+                 },
+                 headers : {
+                    authorization : `Client-ID ${process.env.REACT_APP_ACCESS_KEY}`,
+                 }
+             })
+             console.log(request.data.results);
+             addImages( request.data.results)
+        }
+        catch(error){
+            console.log(error);
+        }
+        
     }
 
     return(
-        <div>
+        <div className="input-bar">
         <input type="text" placeholder="Search Images"
         onChange={(e)=>setSearch(e.target.value)} 
         value={search}/>
